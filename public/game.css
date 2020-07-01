@@ -23,7 +23,7 @@ html {
 	}
 }
 
-#pause {
+.gamebutton {
 	border: none;
 	background: #ddd;
 	color: #333;
@@ -31,4 +31,4 @@ html {
 	outline: none;
 	font-family: monospace;
 	cursor: pointer;
-}	
+}

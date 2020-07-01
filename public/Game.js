@@ -32,9 +32,12 @@ class Game {
             document.getElementById("pause").addEventListener("click", () => {
                 this.pauseOrResume();
             });
+            document.getElementById("reset").addEventListener("click", () => {
+                this.resetGame();
+            });
             this.started = true;
             this.width = window.innerWidth;
-            this.height = window.innerHeight; 
+            this.height = window.innerHeight;
 
             this.player = new Player(this);
             this.timer = setInterval(() => this.update(), 50);
@@ -207,6 +210,13 @@ class Game {
         let gameOver = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, GAME_OVER_PICTURE)
         gameOver.render();
     }
+
+    /**
+     * resetea el juego
+     */
+     resetGame () {
+       document.location.reload();
+     }
 
     /**
      * Actualiza los elementos del juego
