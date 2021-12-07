@@ -6,7 +6,7 @@
 
 # Módulo 10: PWAs: Progressive Web Applications - Entrega P2P: Creando nuestra PWA
 
-Versión: 4 de Julio de 2020
+Versión: 4 de Noviembre de 2021
 
 ## Objetivo
 
@@ -54,23 +54,18 @@ Para ayudar al desarrollo es muy recomendable instalar la extensión de Chrome L
 Con ella podremos ir desarrollando nuestra PWA paso a paso y podremos ir viendo las características que nos faltan.
 Se recomienda utilizar Glitch (https://glitch.com/) para el despliegue final de la PWA, de este modo tendremos una URL para nuestra PWA y la podremos visualizar en diferentes dispositivos sin problema (las URLs de glitch son similares a https://amplified-dour-freighter.glitch.me/, recordar que Glitch "duerme" las aplicaciones para gastar menos y pueden tardar un poco en arrancar).
 
-
-## Entrega de la práctica
-
-El alumno debe entregar su URL de Glitch para poder ser evaluado.
-
-## Evaluación de la práctica
-
-La evaluación de la práctica se realizará mediante revisión por pares (P2P). Cada alumno tendrá que revisar la práctica de 3 de sus compañeros y otros 3 revisarán la suya. Se puede utilizar LightHouse como ayuda para revisar la práctica de los compañeros (alternativamente también se puede utilizar PWABuilder https://www.pwabuilder.com/).
-
-El objetivo de este curso es sacar el máximo provecho al trabajo que están dedicando, por lo que les recomendamos que utilicen la evaluación para ayudar a sus compañeros enviando comentarios sobre la corrección del código, su claridad, legibilidad, estructuración y documentación.
-
-Dado que es un curso para principiantes, ante la duda les pedimos que sean benevolentes con sus compañeros, porque muchos participantes están empezando y los primeros pasos siempre son difíciles.
-
-**OJO! Una vez enviada la evaluación, está no se puede cambiar.** Piensen bien su evaluación antes de enviarla.
-
-**RÚBRICA**: Se puntuará el ejercicio a corregir sumando el % indicado a la nota total si la parte indicada es correcta:
+Cosas que debe cumplir nuestro ejercicio para estar completo. Lista de comprobación:
 
 * **25%:** Tiene un manifest que describe la PWA
 * **50%:** Registra un Service Worker y utiliza las caches
 * **25%:** Muestra el botón instalar la PWA que permite su instalación como aplicación en el dispositivo
+
+Se puede utilizar LightHouse como ayuda para revisar la práctica (alternativamente también se puede utilizar PWABuilder https://www.pwabuilder.com/).
+
+
+## Entrega de la práctica
+
+El alumno debe entregar su URL de Glitch o GitHub en la plataforma.
+
+
+
