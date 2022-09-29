@@ -1,13 +1,7 @@
 {
     "name": "MOOC_html_mod10-PWA_entrega",
     "version": "3.0.1",
-    "license": "Unlicense",
-    "info": {
-        "githubURL": "ging-moocs/MOOC_html_mod10-PWA_entrega",
-        "serverUrl": "https://autocorector.dit.upm.es/",
-        "courseId": "1",
-        "assignmentId": "18"
-    },
+    "license": "Unlicense",    
     "dependencies": {
         "express": "^4.17.1",
         "express-http-to-https": "^1.1.4"
