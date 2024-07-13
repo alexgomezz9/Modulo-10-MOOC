@@ -4,34 +4,69 @@ const urlsToCache = [
   '/index.html',
   '/game.css',
   '/main.js',
-  '/assets/character.png',  // y otros archivos estáticos necesarios
+  '/assets/icon-192x192.png',
+  '/assets/icon-512x512.png',
+  '/Game.js',
+  '/Entity.js',
+  '/Character.js',
+  '/Player.js',
+  '/Opponent.js',
+  '/Shot.js'
 ];
 
-// Instalar el Service Worker y cachear todos los recursos necesarios
+// Instalación del Service Worker y cacheo de recursos
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Cache abierta');
         return cache.addAll(urlsToCache);
+      })
+      .catch(error => {
+        console.error('Fallo en cachear recursos durante la instalación:', error);
       })
   );
 });
 
-// Interceptar solicitudes y servir recursos cacheados
+// Intercepción de solicitudes y servir recursos cacheados
 self.addEventListener('fetch', event => {
+  if (event.request.url.startsWith('chrome-extension') || event.request.url.includes('chrome-extension')) {
+    return; // Ignorar las solicitudes de las extensiones de Chrome
+  }
   event.respondWith(
     caches.match(event.request)
       .then(response => {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        return fetch(event.request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+          }
+          return networkResponse;
+        }).catch(error => {
+          console.error('Fallo en la solicitud de red:', error);
+          // Opcionalmente, devolver un recurso de reserva o un mensaje de error
+          return new Response('Error en la solicitud de red', {
+            status: 404,
+            statusText: 'Not Found'
+          });
+        });
+      }).catch(error => {
+        console.error('Fallo en el fetch handler:', error);
+        // Opcionalmente, devolver un recurso de reserva o un mensaje de error
+        return new Response('Error en el fetch handler', {
+          status: 404,
+          statusText: 'Not Found'
+        });
       })
   );
 });
 
-// Actualizar el Service Worker
+// Activación del Service Worker y limpieza de caches antiguas
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(

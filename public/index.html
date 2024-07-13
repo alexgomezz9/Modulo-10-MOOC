@@ -5,7 +5,7 @@
   <title>Shooter Game</title>
   <link type="text/css" rel="stylesheet" href="game.css">
   <link rel="manifest" href="manifest.json">
-  <meta name="viewport" content="user-scalable=0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="Game.js" type="text/javascript"></script>
   <script src="Entity.js" type="text/javascript"></script>
   <script src="Character.js" type="text/javascript"></script>
@@ -35,32 +35,24 @@
     const installButton = document.getElementById('install-button');
 
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevenir que el navegador muestre el aviso de instalación por defecto
       e.preventDefault();
-      // Guardar el evento para que se pueda mostrar el aviso de instalación más tarde
       deferredPrompt = e;
-      // Mostrar el botón de instalación
       installButton.style.display = 'block';
 
       installButton.addEventListener('click', () => {
-        // Ocultar el botón de instalación
         installButton.style.display = 'none';
-        // Mostrar el aviso de instalación
         deferredPrompt.prompt();
-        // Esperar a que el usuario responda al aviso
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
             console.log('El usuario aceptó la instalación');
           } else {
             console.log('El usuario rechazó la instalación');
           }
-          // Resetear deferredPrompt para que se pueda mostrar el aviso de nuevo si es necesario
           deferredPrompt = null;
         });
       });
     });
 
-    // Ocultar el botón si la PWA ya está instalada
     window.addEventListener('appinstalled', () => {
       console.log('PWA instalada');
       installButton.style.display = 'none';
